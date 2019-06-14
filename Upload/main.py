@@ -4,8 +4,9 @@ import utime
 
 # Pin definitions
 repl_button = machine.Pin(0, machine.Pin.IN, machine.Pin.PULL_UP)
+led = machine.Pin(5, machine.Pin.OUT)
 
-# Wait for button 0 to be pressed, and then exit
+# Blink forever
 while True:
 
     # If button 0 is pressed, drop to REPL
@@ -13,5 +14,8 @@ while True:
         print("Dropping to REPL")
         sys.exit()
 
-    # Do nothing
-    utime.sleep_ms(1)
+    # Turn LED on and then off
+    led.value(1)
+    utime.sleep_ms(500)
+    led.value(0)
+    utime.sleep_ms(500)
