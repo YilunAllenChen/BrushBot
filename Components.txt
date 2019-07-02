@@ -1,0 +1,18 @@
+VL6180	-	Light Sensor
+ESP8266 -	MCU
+AP2112	-	Voltage Regulator / Power supply
+BQ24075 -	Wireless Charging
+	Choosing charging rates:
+		K_ISET values: min/avg/max: 797/890/975
+		I_CHG => K_ISET/R_ISET. For example, In order to have a 800mA charge current: 890 / 0.8 = 1.1125kOhm, so connect a 1.13kOhm resistor between ISET(16) and VSS.
+
+	Choosing Limit charge rates:
+		K_ILIM values: min/avg/max: 1550/1610/1720 for I_LIM in (0.5A,1.5A), 1330/1525/1720 for I_LIM in (0.2A, 0.5A). I_LIM at pin 12.
+		R_ISET = 1550 / 1.3 = 1.192kOhm, so connect a 1.18kOhm resistor between ILIM(12) and VSS.
+
+	Choosing 6.25h safety charging timer:
+		R_TMR = t_maxchrg / (10*K_TMR)
+		K_TMR = 48 (36/48/60)
+		R_TMR = 6.25h * 3600s/h / (10*48) = 46.8kOhm, so connect a 46.4kOhm between TMR(2) and VSS.
+
+INA219 - 	Current Sensor / Power monitoring component
