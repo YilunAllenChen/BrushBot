@@ -3,12 +3,19 @@ import sys
 import utime
 import vl6180_Driver
 
-# Pin definitions
+#I2C Definition. Don't change.
+i2c = machine.I2C(-1,machine.Pin(22),machine.Pin(21))
+
+# Default Reset Pin Definition. Don't Change.
 repl_button = machine.Pin(0, machine.Pin.IN, machine.Pin.PULL_UP)
+
+# Default LED Pin Definition on the SparkFun board. For testing purposes.
 led = machine.Pin(5, machine.Pin.OUT)
 
-i2c = machine.I2C(-1,machine.Pin(22),machine.Pin(21))
+# Laser Sensor Initialization
 sensor1 = vl6180_Driver.Sensor(i2c,41)
+
+
 
 # Blink forever
 while True:
