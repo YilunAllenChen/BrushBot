@@ -15,8 +15,6 @@ led = machine.Pin(5, machine.Pin.OUT)
 # Laser Sensor Initialization
 sensor1 = vl6180_Driver.Sensor(i2c,41)
 
-
-
 # Blink forever
 while True:
 
