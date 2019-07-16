@@ -2,7 +2,7 @@
 
 This Repo serves the BrushBot 2.0 project from its hardware to its software.
 
-## Projec Structure
+## Project Structure
 main.py: the program that ESP will execute once it boots up.\
 ina219.py: firmware for ina219 current sensor.\
 vl6180Driver.py: firmware for VL6180x sensor.\
