@@ -2,7 +2,22 @@
 
 This Repo serves the BrushBot 2.0 project from its hardware to its software.
 
-##INA219 Interface Example
+## Projec Structure
+main.py: the program that ESP will execute once it boots up.\
+ina219.py: firmware for ina219 current sensor.\
+vl6180Driver.py: firmware for VL6180x sensor.\
+logging.py: Supporting module for ina219 current sensor.
+
+## Installation
+    pip install adafruit-ampy esptool
+Then after the these two pip packages are installed, you can modify the files as you need. Once done modifying, connect the esp board to the computer, then run the following command to upload all files under 'Softare' to ESP.
+
+    python Upload.py
+If any error occurs, change the 'port' variable in the program into whatever the port is.
+
+
+
+## INA219 Interface Example
 
 ```python
 from ina219 import INA219
@@ -18,7 +33,7 @@ print("Current: %.3f mA" % ina.current())
 print("Power: %.3f mW" % ina.power())
 ```
 
-##VL6180 Interface Example
+## VL6180 Interface Example
 
 ```python
 import machine
