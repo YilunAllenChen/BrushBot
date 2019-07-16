@@ -1,4 +1,4 @@
-for /r %%i in (.\Upload\*) do (
+for /r %%i in (.\Software\*) do (
     echo Uploading: %%i
     ampy --port COM5 put %%i
 )
