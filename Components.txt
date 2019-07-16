@@ -1,5 +1,5 @@
 VL6180	-	Light Sensor
-ESP8266 -	MCU
+ESP32 -	MCU
 AP2112	-	Voltage Regulator / Power supply
 BQ24075 -	Wireless Charging
 	Choosing charging rates:
