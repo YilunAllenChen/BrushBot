@@ -40,11 +40,13 @@ while True:
         sys.exit()
     # Turn LED on and then off
     print("Available addresses: | " + str(i2c.scan()))
-    try:
-        print("    Sensor 1: " + str(sensor1.range()))
-        print("    Sensor 2: " + str(sensor2.range()))
-    except:
-        print("one of the VL6180x sensors doesn't work.")
+
+
+    for ndx in len(sensors):
+        try:
+            print("Sensor " + str(ndx) + " " + str(sensors[ndx].range()))
+        except:
+            print("Sensor " + str(ndx) + " doesn't work.")
 
     try:
         print("Bus Voltage: %.3f V" % ina.voltage())
