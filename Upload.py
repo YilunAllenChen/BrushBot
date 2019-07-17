@@ -3,7 +3,7 @@ from time import sleep
 
 port = "COM5"
 
-mypath = "./Software/"
+mypath = "./Firmware/"
 
 files = [f for f in os.listdir(mypath)]
 print(files)
