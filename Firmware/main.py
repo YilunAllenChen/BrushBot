@@ -3,6 +3,12 @@ import sys
 import utime
 import vl6180_Driver
 from ina219 import INA219
+from configureVL6180 import configureVL6180
+
+#Sensor-enable Initialization
+sensor_en = machine.Pin(19, machine.Pin.OUT)
+sensor_en.value(1)
+
 
 #I2C Definition. Don't change.
 i2c = machine.I2C(-1,machine.Pin(22),machine.Pin(21))
@@ -15,15 +21,15 @@ led = machine.Pin(5, machine.Pin.OUT)
 
 # Laser Sensor Initialization
 sensors = []
-for addr in range (41, 48):  # VL6180 sensors should be on i2c addresses 41-48.
+for addr in range (41,48):  # VL6180 sensors should be on i2c addresses 41-48.
     try:
-        sensors[addr-41] = vl6180_Driver.Sensor(i2c,addr)
+        sensors.append(vl6180_Driver.Sensor(i2c,addr))
         print("VL6180x sensor at address " + str(addr) + " is configured successfully." )
     except:
         print("Unable to initialize VL6180x sensor on i2c address " + str(addr))
 
 # Current Sensor Initialization
-shunt_resistance = 0.1      # Change if needed
+shunt_resistance = 0.05      # Change if needed
 try:
     ina = INA219(shunt_resistance, i2c)
     ina.configure()
@@ -42,7 +48,7 @@ while True:
     print("Available addresses: | " + str(i2c.scan()))
 
 
-    for ndx in len(sensors):
+    for ndx in range(len(sensors)):
         try:
             print("Sensor " + str(ndx) + " " + str(sensors[ndx].range()))
         except:

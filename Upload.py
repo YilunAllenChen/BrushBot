@@ -1,7 +1,9 @@
 import os
 from time import sleep
 
-port = "COM5"
+port = "COM6"
+
+
 
 mypath = "./Firmware/"
 
