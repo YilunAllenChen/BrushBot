@@ -1,4 +1,5 @@
 import machine
+import neopixel
 import sys
 import utime
 import vl6180_Driver
@@ -9,6 +10,9 @@ from configureVL6180 import configureVL6180
 sensor_en = machine.Pin(19, machine.Pin.OUT)
 sensor_en.value(1)
 
+#LED neoPixel on Pin 37 setup
+neoPixel = neopixel.NeoPixel(machine.Pin(4),8)
+
 
 #I2C Definition. Don't change.
 i2c = machine.I2C(-1,machine.Pin(22),machine.Pin(21))
@@ -17,7 +21,7 @@ i2c = machine.I2C(-1,machine.Pin(22),machine.Pin(21))
 repl_button = machine.Pin(0, machine.Pin.IN, machine.Pin.PULL_UP)
 
 # Default LED Pin Definition on the SparkFun board. For testing purposes.
-led = machine.Pin(5, machine.Pin.OUT)
+led = machine.Pin(32, machine.Pin.OUT)
 
 # Laser Sensor Initialization
 sensors = []
@@ -33,7 +37,7 @@ shunt_resistance = 0.05      # Change if needed
 try:
     ina = INA219(shunt_resistance, i2c)
     ina.configure()
-    print("INA219 sensor at address 65 is configured successfully.")
+    print("INA219 sensor at address " + str(ina._address) + " is configured successfully.")
 except:
     print("Unable to initialize INA219 sensor on address 65.")
 
@@ -63,6 +67,13 @@ while True:
         print("INA219 sensor is malfunctioning.")
     
     led.value(1)
+    neoPixel[1] = (0,0,255)
+    neoPixel.write()
     utime.sleep_ms(500)
+
+    
     led.value(0)
+    neoPixel[1] = (0,255,0)
+    neoPixel.write()
     utime.sleep_ms(500)
+    

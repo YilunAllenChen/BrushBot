@@ -15,7 +15,7 @@ class Sensor:
 
     def myWrite16(self, register, regValue):
         """ write a byte to specified 16 bit register """
-        return self.i2c.writeto_mem(self._address, register, bytearray([regValue]), addrsize=16), 'big'
+        return self.i2c.writeto(self._address, register, bytearray([regValue]), addrsize=16), 'big'
 
     def myRead16(self, register):
         """read 1 bit from 16 byte register"""
