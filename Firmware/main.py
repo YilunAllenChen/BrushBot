@@ -7,11 +7,17 @@ from ina219 import INA219
 from configureVL6180 import configureVL6180
 
 #Sensor-enable Initialization
+sensor_en = machine.Pin(18, machine.Pin.OUT)
+sensor_en.value(1)
+#Motor-enable Initialization
 sensor_en = machine.Pin(19, machine.Pin.OUT)
 sensor_en.value(1)
 
 #LED neoPixel on Pin 37 setup
-neoPixel = neopixel.NeoPixel(machine.Pin(4),8)
+try:
+    neoPixel = neopixel.NeoPixel(machine.Pin(23),2)
+except:
+    print("Unable to initialize neoPixel.")
 
 
 #I2C Definition. Don't change.
@@ -20,7 +26,7 @@ i2c = machine.I2C(-1,machine.Pin(22),machine.Pin(21))
 # Default Reset Pin Definition. Don't Change.
 repl_button = machine.Pin(0, machine.Pin.IN, machine.Pin.PULL_UP)
 
-# Default LED Pin Definition on the SparkFun board. For testing purposes.
+# Default LED pin. Bot Running Indicator. This LED is right to the left of the ESP board.
 led = machine.Pin(32, machine.Pin.OUT)
 
 # Laser Sensor Initialization
@@ -67,13 +73,15 @@ while True:
         print("INA219 sensor is malfunctioning.")
     
     led.value(1)
-    neoPixel[1] = (0,0,255)
+    neoPixel[1] = (0,0,10)
+    neoPixel[0] = (0,10,0)
     neoPixel.write()
     utime.sleep_ms(500)
 
     
     led.value(0)
-    neoPixel[1] = (0,255,0)
+    neoPixel[1] = (0,10,0)
+    neoPixel[0] = (0,0,10)
     neoPixel.write()
     utime.sleep_ms(500)
     
