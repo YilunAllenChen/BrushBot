@@ -5840,11 +5840,6 @@ GND: Flash Mode</text>
 <wire x1="203.2" y1="325.12" x2="200.66" y2="325.12" width="0.1524" layer="91"/>
 <label x="200.66" y="325.12" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
-<segment>
-<pinref part="U3" gate="G$1" pin="VCC"/>
-<wire x1="350.52" y1="203.2" x2="355.6" y2="203.2" width="0.1524" layer="91"/>
-<label x="355.6" y="203.2" size="1.27" layer="95" xref="yes"/>
-</segment>
 </net>
 <net name="V_SUP" class="0">
 <segment>
@@ -6364,6 +6359,11 @@ GND: Flash Mode</text>
 <wire x1="375.92" y1="190.5" x2="378.46" y2="190.5" width="0.1524" layer="91"/>
 <wire x1="378.46" y1="190.5" x2="378.46" y2="193.04" width="0.1524" layer="91"/>
 <label x="378.46" y="193.04" size="1.27" layer="95" rot="R90" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U3" gate="G$1" pin="VCC"/>
+<wire x1="350.52" y1="203.2" x2="355.6" y2="203.2" width="0.1524" layer="91"/>
+<label x="355.6" y="203.2" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="N$14" class="0">
