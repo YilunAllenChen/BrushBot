@@ -38,6 +38,6 @@ class DRV8836:
     def testRun(self):
         for i in range(500):
             self.setLeft(i)
-            self.setRight(100-i)
+            self.setRight(500-i)
             utime.sleep_ms(10)
         self.stop()
