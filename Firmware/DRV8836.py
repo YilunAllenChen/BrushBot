@@ -12,7 +12,7 @@ class DRV8836:
     def setLeft(self,speed):
         if(speed > 1024 or speed < -1024):
             print("Invalid speed entry. Value capped at +-1023.")
-        elif(speed > 0):
+        elif(speed >= 0):
             self.A1.duty(speed)
             self.A2.duty(0)
         elif(speed < 0):
@@ -22,7 +22,7 @@ class DRV8836:
     def setRight(self,speed):
         if(speed > 1024 or speed < -1024):
             print("Invalid speed entry. Value capped at +-1023.")
-        elif(speed > 0):
+        elif(speed >= 0):
             self.B1.duty(speed)
             self.B2.duty(0)
         elif(speed < 0):

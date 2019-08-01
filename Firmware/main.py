@@ -90,11 +90,13 @@ while True:
     neoPixel[1] = (0,0,10)
     neoPixel[0] = (0,10,0)
     neoPixel.write()
-    utime.sleep_ms(500)
+    utime.sleep_ms(1000)
+    drv.setLeft(1000)
+    drv.setRight(1000)
     
     led.value(0)
     neoPixel[1] = (0,10,0)
     neoPixel[0] = (0,0,10)
     neoPixel.write()
-    utime.sleep_ms(500)
-    
+    utime.sleep_ms(1000)
+    drv.stop()
