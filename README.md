@@ -68,3 +68,6 @@ drv.testRun() # Test run function.
 drv.setLeft(1000) # Set the motor output of left. -1023 ~ 1023.
 drv.stop()
 ```
+
+## TCP-IP
+Note: In order for the Controller to work, the server side computer needs to allow TCP/IP inbound/outbound connections on port 23.

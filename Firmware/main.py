@@ -5,6 +5,7 @@ import utime
 import vl6180
 import DRV8836
 from ina219 import INA219
+import networking
 #from configureVL6180 import configureVL6180   #archived.
 
 
@@ -51,6 +52,9 @@ try:
     drv = DRV8836.DRV8836(machine.Pin(33),machine.Pin(25),machine.Pin(26),machine.Pin(27))
 except Exception as e: print(e)
 
+wlan = networking.connect('allenchen_hotspot','allenchen')
+socket = networking.connect_socket('192.168.137.1')
+
     
 ####################    End of Initialization   ################################
 
@@ -91,12 +95,11 @@ while True:
     neoPixel[0] = (0,10,0)
     neoPixel.write()
     utime.sleep_ms(1000)
-    drv.setLeft(1000)
-    drv.setRight(1000)
     
     led.value(0)
     neoPixel[1] = (0,10,0)
     neoPixel[0] = (0,0,10)
     neoPixel.write()
+
+    
     utime.sleep_ms(1000)
-    drv.stop()

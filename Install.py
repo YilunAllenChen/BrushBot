@@ -3,7 +3,7 @@ import os
 port = "COM6"
 
 print("Installing esptool...\n")
-os.system("pip install esptool")
+os.system("pip install esptool pynput")
 print("\nInstallation Complete.\n\n Erasing Flash on ESP32 Chip...\n")
 try:
     os.system("esptool.py --port " + port + " erase_flash")
