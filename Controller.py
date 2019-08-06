@@ -30,7 +30,7 @@ print('starting up on %s port %s' % server_address)
 sock.bind(server_address)
 
 # Listen for incoming connections
-sock.listen(10)
+sock.listen()
 
 while True:
     # Wait for a connection
@@ -42,11 +42,9 @@ while True:
 
         # Receive the data in small chunks and retransmit it
         while True:
-            data = connection.recv(500)
-            print('received "%s"' % data.decode())
+            data = connection.recv(500).decode()
             if data:
-                print('sending data back to the client')
-                connection.sendall(data)
+                print('received "%s"' % data)
             else:
                 print('no more data from', client_address)
                 break
