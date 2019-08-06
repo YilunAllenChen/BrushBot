@@ -15,11 +15,11 @@ def on_release(key):
         # Stop listener
         return False
 
-# Collect events until released
-with Listener(
-        on_press=on_press,
-        on_release=on_release) as listener:
-    listener.join() 
+# # Collect events until released
+# with Listener(
+#         on_press=on_press,
+#         on_release=on_release) as listener:
+#     listener.join() 
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
