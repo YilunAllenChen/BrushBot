@@ -1,9 +1,16 @@
-import os
+import os, sys
 
-port = "COM6"
+port = "invalid_port"
 
+try:
+    port = str(sys.argv[1])
+    print(port)
+except:
+    print("Invalid Port")
+
+    
 print("Installing esptool...\n")
-os.system("pip install esptool pynput")
+os.system("pip install esptool ampy pynput")
 print("\nInstallation Complete.\n\n Erasing Flash on ESP32 Chip...\n")
 try:
     os.system("esptool.py --port " + port + " erase_flash")

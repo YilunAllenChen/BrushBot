@@ -94,8 +94,6 @@ utime.sleep(0.2)
 
 
 dataCount = 0
-drv.setLeft(1000)
-drv.setRight(1000)
 
 # Blink forever
 while True:
@@ -129,13 +127,15 @@ while True:
     neoPixel[0] = (0, 10, 0)
     neoPixel.write()
     utime.sleep_ms(1000)
+    drv.setLeft(1000)
+    drv.setRight(1000)
 
     neoPixel[1] = (0, 10, 0)
     neoPixel[0] = (0, 0, 10)
     neoPixel.write()
 
     utime.sleep_ms(1000)
+    drv.stop()
 
     if dataCount >= 10:
         socket.close()
-        drv.stop()

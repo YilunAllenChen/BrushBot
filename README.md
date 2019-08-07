@@ -6,15 +6,23 @@ This Repo serves the BrushBot 2.0 project from its hardware to its software.
 main.py: the program that ESP will execute once it boots up.\
 ina219.py: Firmware for ina219 current sensor.\
 vl6180Driver.py: Firmware for VL6180x sensor.\
-logging.py: Supporting module for ina219 current sensor.
+logging.py: Supporting module for ina219 current sensor.\
 DRV8836.py: Firmware for DRV8836 motor driver.
 
 ## Installation
-    pip install adafruit-ampy esptool
-Then after the these two pip packages are installed, you can modify the files as you need. Once done modifying, connect the esp board to the computer, then run the following command to upload all files under 'Softare' to ESP.
+Before the installation process begins, make sure your BrushBot is connected through FTDI to the computer.
 
-    python Upload.py
-If any error occurs, change the 'port' variable in the program into whatever the port is.
+You need to find the port connected to the BrushBot and replace "your_port" in the script below with that port. on Windows it should look like "COMx", mac "dev/xxxxx", linux "USB/ttyx".
+
+Then run the script under the repo directory:
+
+    python install.py your_port
+
+The script provided by this repo will allow you to automatically install the dependencies of computer-brushbot interaction. Afterwards, it will attempt to installing the micropython firmware under the ./_MicroPython_bin directory to the BrushBot connected. This process involves erasing the flash and putting the bin file inside.
+
+Once this is done, you can use the following script to automatically upload all your programs under ./Firmware directory to the robot. The your_port part is the same deal as the one with the install.py script.
+
+    python Upload.py your_port
 
 
 

@@ -1,8 +1,14 @@
-import os
+import os, sys
 from time import sleep
 
-port = "COM6"
+port = "Invalid_port"
 
+
+try:
+    port = str(sys.argv[1])
+    print(port)
+except:
+    print("Invalid Port")
 
 
 mypath = "./Firmware/"
