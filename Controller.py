@@ -3,6 +3,12 @@ import sys
 from pynput.keyboard import Key, Listener
 
 
+server_address = ('192.168.137.1', 23)
+
+
+
+
+
 
 def on_press(key):
     print('{0} pressed'.format(
@@ -25,7 +31,6 @@ def on_release(key):
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Bind the socket to the port
-server_address = ('192.168.137.1', 23)
 print('starting up on %s port %s' % server_address)
 sock.bind(server_address)
 

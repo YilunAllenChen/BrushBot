@@ -52,7 +52,7 @@ import utime
 import vl6180_Driver
 
 i2c = machine.I2C(-1,machine.Pin(22),machine.Pin(21)) #setup i2
-sensor1 = vl6180_Driver.Sensor(i2c,41) # Create a sensor object
+sensor1 = vl6180_Driver.Sensor(i2c,41) # Create a sensor object. Second parameter is the i2c address of the VL6180x sensor. 
 
 # Usage
 print("Value read in address 41: " + str(sensor1.range()))
@@ -78,4 +78,11 @@ drv.stop()
 ```
 
 ## TCP-IP
+
+to start the TCP server:
+
+    python Controller.py
+
+Currently all the Controller does is logging the information being sent to the Controller. You might need to change the server address in the file.
+
 Note: In order for the Controller to work, the server side computer needs to allow TCP/IP inbound/outbound connections on port 23.
