@@ -1,11 +1,10 @@
-import machine
-import neopixel
-import sys
-import utime
-import vl6180
-import DRV8836
-import networking
-from ina219 import INA219
+import machine, neopixel, sys, utime # System libraries
+import vl6180, DRV8836, networking
+from ina219 import INA219 # Customized Libraries
+
+
+
+
 # from configureVL6180 import configureVL6180   #archived.
 
 
