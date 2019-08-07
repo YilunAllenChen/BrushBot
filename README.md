@@ -54,7 +54,7 @@ import vl6180_Driver
 i2c = machine.I2C(-1,machine.Pin(22),machine.Pin(21)) #setup i2
 sensor1 = vl6180_Driver.Sensor(i2c,41) # Create a sensor object
 
-# Ssage
+# Usage
 print("Value read in address 41: " + str(sensor1.range()))
 ```
 
