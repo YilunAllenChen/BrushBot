@@ -14,8 +14,8 @@ print("\nInitializing devices. The red LED on the robot should light up.\n")
 
 # WiFi Connections
 try:
-    wlan = networking.connect('allenchen_hotspot', 'allenchen')
-    socket = networking.connect_socket('192.168.137.1')
+    wlan = networking.connect('brushbotarium', 'brushbotrules')
+    socket = networking.connect_socket('192.168.1.2')
 except:
     print("\033[91m{}\033[00m".format("Failed") + " to connect to hotspot.")
 
@@ -86,7 +86,12 @@ try:
 except Exception as e:
     print(e)
 
-utime.sleep(0.2)
+# Counter initialization for motor sweep
+ticks_max = utime.ticks_add(0, -1)
+increment = 100 #increment in PWM
+counter = 0
+deadline = utime.ticks_add(utime.ticks_ms(),2000)
+#utime.sleep(0.2)
 
 
 ####################    End of Initialization   ################################
@@ -127,15 +132,26 @@ while True:
     neoPixel[0] = (0, 10, 0)
     neoPixel.write()
     utime.sleep_ms(1000)
-    drv.setLeft(1000)
-    drv.setRight(1000)
+
+    # Motor control
+    if utime.ticks_diff(utime.ticks_ms(),deadline) > 0:
+        print("Updating Speed" + str(deadline))
+        deadline = utime.ticks_add(utime.ticks_ms(),2000)
+        counter = counter + 1
+
+    if counter > 10:
+        counter = 0
+
+    current_speed = counter*increment
+    drv.setLeft(current_speed)
+    drv.setRight(current_speed)
 
     neoPixel[1] = (0, 10, 0)
     neoPixel[0] = (0, 0, 10)
     neoPixel.write()
 
-    utime.sleep_ms(1000)
-    drv.stop()
+    #utime.sleep_ms(1000)
+    #drv.stop()
 
     if dataCount >= 10:
         socket.close()
